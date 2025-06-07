@@ -1,6 +1,17 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Antonio, League_Spartan } from "next/font/google";
 import "./globals.css";
+import { PlanetProvider } from "../context/PlanetContext";
+
+const spartanFont = League_Spartan({
+  variable: "--font-spartan",
+  subsets: ["latin"],
+});
+
+const antonioFont = Antonio({
+  variable: "--font-antonio",
+  subsets: ["latin"],
+});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,9 +36,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${spartanFont.variable}  ${antonioFont.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <PlanetProvider>{children}</PlanetProvider>
       </body>
     </html>
   );
