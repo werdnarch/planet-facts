@@ -30,3 +30,16 @@ export interface PlanetData {
   temperature: string;
   images: PlanetImages;
 }
+
+export const themes: Record<PlanetName, string> = {
+  Mercury: "#419EBB",
+  Venus: "#EDA348",
+  Earth: "#6C2ED4",
+  Mars: "#D14C32",
+  Jupiter: "#D93A35",
+  Saturn: "#CD5021",
+  Uranus: "#1EC1A2",
+  Neptune: "#2C68F1",
+};
+
+export type Tab = "overview" | "structure" | "surface";

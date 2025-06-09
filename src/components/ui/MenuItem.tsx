@@ -1,14 +1,22 @@
 import React from "react";
 import { ChevronRight } from "lucide-react";
 import { PlanetName } from "@/src/types";
+import { usePlanetContext } from "@/src/context/PlanetContext";
 
 interface MenuItemProps {
   menuOpen: boolean;
   index: number;
   planet: PlanetName;
+  setMenuOpen: (value: boolean) => void;
 }
 
-export default function MenuItem({ menuOpen, index, planet }: MenuItemProps) {
+export default function MenuItem({
+  menuOpen,
+  index,
+  setMenuOpen,
+  planet,
+}: MenuItemProps) {
+  const { setCurrentPlanet, planets } = usePlanetContext();
   const themes = {
     Mercury: "#419EBB",
     Venus: "#EDA348",
@@ -23,8 +31,18 @@ export default function MenuItem({ menuOpen, index, planet }: MenuItemProps) {
   };
 
   const theme = themes[planet];
+
+  const handleClick = () => {
+    const selected = planets.find((p) => p.name === planet);
+    if (selected) setCurrentPlanet(selected);
+    setMenuOpen(false);
+  };
+
   return (
-    <div className=" h-fit flex items-center justify-center my-1  relative overflow-x-hidden">
+    <div
+      onClick={handleClick}
+      className=" h-fit flex items-center justify-center my-1  relative overflow-x-hidden"
+    >
       <div className="py-4 opacity-0">planet</div>
       <div
         style={{ animationDelay: `${index * 100}ms` }}

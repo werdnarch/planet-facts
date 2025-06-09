@@ -12,7 +12,7 @@ export default function MenuButton({ setMenuOpen }: MenuButtonProps) {
   return (
     <button
       onClick={() => setMenuOpen((prev) => !prev)}
-      className="cursor-pointer"
+      className="cursor-pointer md:hidden"
     >
       <MenuIcon size={30} />
     </button>
